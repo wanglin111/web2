@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>carousel</title>
+	<link rel="stylesheet" href="1.css">
+	<script src="12.10.js"></script>
+</head>
+
+<body>
+	<div class="max" id="max">
+	<div class="top" >
+		<div class="head">
+			
+				<img src="images\a15.png" alt="" class="topPic">
+				
+				<div class="tip">
+					<ul class="words" id="words" >
+						<li id="word">[溫馨提示]最近有不少不法分子在網上騙人，請大家注意！！！</li>
+						<li id="word">[溫馨提示]最近有不少不法分子在網上騙人，請大家注意！！！</li>
+
+					</ul>
+				</div>
+			
+		</div>
+	<div class="box" id="box">
+		<div class="slider" id="slider">
+			<div class="slide"><img src="images\b5.png" alt=""></div>
+			<div class="slide"><img src="images\b1.png" alt=""></div>
+			<div class="slide"><img src="images\b2.png" alt=""></div>
+			<div class="slide"><img src="images\b3.png" alt=""></div>
+			<div class="slide"><img src="images\b4.png" alt=""></div>
+			<div class="slide"><img src="images\b5.png" alt=""></div>
+			<div class="slide"><img src="images\b1.png" alt=""></div>
+		</div>
+		<span id="left">
+			<
+		</span>
+		<span id="right">
+			>
+		</span>
+		<ul class="nav" id="nav">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	</div>
+	</div>
+	<script>
+		var box = document.getElementById('box');
+		var slider = document.getElementById('slider');
+		var left = document.getElementById('left');
+		var right = document.getElementById('right');
+		var oNavlist = document.getElementById('nav').children;
+		var word=document.getElementById("word");
+		var index = 1; //打开页面生效的图片的下标为1
+		var timer;
+		var timer=setInterval(next,3000);
+		var words=document.getElementById("words");
+		window.onload=setInterval(show,30);
+		function show(){
+			var left=words.offsetLeft-1;
+			words.style.left=left+"px";
+			if(-1*words.offsetLeft >=words.offsetWidth/2){
+				words.style.left=0;
+			}
+		}
+		right.onclick = next;
+		left.onclick = prev;
+
+		function next() {
+			if (isMoving) {
+				return;
+			}
+			isMoving = true;
+			index++;
+			navmove();
+			animate(slider, {
+				left: -1200 * index
+			}, function () {
+				if (index == 6) {
+					slider.style.left = '-1200px';
+					index = 1;
+				}
+				isMoving = false;
+			});
+		}
+
+		function prev() {
+			if (isMoving) {
+				return;
+			}
+			isMoving = true;
+			index--;
+			navmove();
+			animate(slider, {
+				left: -1200 * index
+			}, function () {
+				if (index == 0) {
+					slider.style.left = '-6000px';
+					index = 5;
+				}
+				isMoving = false;
+			});
+		}
+		var isMoving = false;
+
+		box.onmouseover = function () {
+			animate(left, {
+				opacity: 60
+			})
+			animate(right, {
+				opacity: 60
+			})
+		
+			clearInterval(timer); //图片停止滚动
+		}		
+		box.onmouseout = function () {
+			animate(left, {
+				opacity: 0
+			})
+			animate(right, {
+				opacity: 0
+			})
+			timer = setInterval(next, 3000); //图片开始接着滚动
+		}
+	
+		//按钮点击切换事件
+		for (var i = 0; i < oNavlist.length; i++) {
+			oNavlist[i].index = i;
+			oNavlist[i].onclick = function () {
+				index = this.index + 1;
+				navmove();
+				animate(slider, {
+					left: -1200 * index
+				});
+			}
+
+		}
+		//图片切换时按钮样式跟着切换
+		function navmove() {
+			for (var i = 0; i < oNavlist.length; i++) {
+				oNavlist[i].className = "";
+			}
+			if (index > 5) {
+				oNavlist[0].className = "active";
+			} else if (index <= 0) {
+				oNavlist[4].className = "active";
+			} else {
+				oNavlist[index - 1].className = "active";
+			}
+		}
+		//页面打开时自动滚动切换
+		timer = setInterval(next, 3000);
+	</script>
+</body>
+
+</html>

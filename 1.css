@@ -1,0 +1,123 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+ul,
+li {
+	list-style: none;
+}
+.max{
+	height: 500px;
+	width: 1300px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	margin: 100px auto;
+}
+.top{
+	height: 402px;
+	margin: 70px auto;
+	position: relative;
+}
+.head{
+	height: 20px;
+	background-color: #ccc;
+	position: relative;
+	
+}
+.tip{
+	width: 950px;
+	height: 20px;
+	margin-right: 150px;
+	overflow: hidden;
+	float: right;
+	position: relative;
+	left: 10px;
+	top: 0px;
+}
+.topPic{
+	margin-left: 150px;
+}
+.box {
+	width: 1200px;
+	height: 397px;
+	border: 1px ;
+	margin: 5px auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.slider {
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+
+.slide {
+	width: 1200px;
+	float: left;
+}
+
+.box>span {
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	color: white;
+	top: 175px;
+	line-height: 50px;
+	background-color: red;
+	font-size: 30px;
+	position: absolute;
+	opacity: 0;
+}
+
+#left {
+	left: 30px;
+}
+
+#right {
+	right: 30px;
+	
+}
+#words{
+	position: absolute;
+	color: red;
+
+}
+.head ul{
+	position: 50px;
+}
+
+.nav {
+	position: absolute;
+	left: 500px;
+	bottom: 20px;
+}
+
+.nav>li {
+	float: left;
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	cursor: pointer;
+	margin: 0 10px;
+	border-radius: 50%;
+	color: black;
+}
+
+.nav .active {
+	background: red;
+}
+.words{
+	width: 2660px;
+	position: absolute;
+	left: 660px;	
+}
+#word{
+	width: 1330px;
+	float: left;
+	font-size: 15px;
+	color: red;
+}
